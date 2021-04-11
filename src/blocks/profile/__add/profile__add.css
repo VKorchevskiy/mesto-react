@@ -1,0 +1,19 @@
+.profile__add {
+  margin: 33px 0 0 0;
+  padding: 0 0 46px;
+  width: 100%;
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+  background-image: url("../../../images/add-button.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-color: inherit;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__add {
+    margin-top: 0;
+    width: 150px;
+  }
+}

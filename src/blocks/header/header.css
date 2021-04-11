@@ -1,0 +1,14 @@
+.header {
+  /* padding: 0 0 28px 8px; */
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  max-width: 880px;
+  box-sizing: border-box;
+}
+
+/* @media screen and (min-width: 768px) {
+  .header {
+    padding-bottom: 37px;
+    padding-left: 0;
+  }
+}
+ */

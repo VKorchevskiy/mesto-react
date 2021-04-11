@@ -1,0 +1,14 @@
+.form__input-text {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 0 0 8px 0;
+  margin: 0 0 5px;
+  width: 100%;
+}
+
+.form__input-text:focus {
+  outline: 1px solid #000000;
+}

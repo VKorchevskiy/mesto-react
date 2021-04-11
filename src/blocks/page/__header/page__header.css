@@ -1,0 +1,17 @@
+.page__header {
+  padding: 28px 5.9375% 27px calc(5.9375% + 8px);
+}
+
+@media screen and (min-width: 768px) {
+  .page__header {
+    padding: 45px 0 37px;
+    margin: 0 15.625% 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .page__header {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}

@@ -1,0 +1,16 @@
+.page__footer {
+  padding: 48px 5.9375% 36px;
+}
+
+@media screen and (min-width: 768px) {
+  .page__footer {
+    padding: 68px 15.625% 60px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .page__footer {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}

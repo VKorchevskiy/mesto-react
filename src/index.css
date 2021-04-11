@@ -1,13 +1,68 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import "./vendor/normalize.css";
+@import "./vendor/fonts/inter/inter.css";
+@import "./blocks/page/page.css";
+@import "./blocks/page/__header/page__header.css";
+@import "./blocks/page/__content/page__content.css";
+@import "./blocks/page/__footer/page__footer.css";
+@import "./blocks/header/header.css";
+@import "./blocks/logo/logo.css";
+@import "./blocks/button/button.css";
+@import "./blocks/button/_type/button_type_edit-avatar.css";
+@import "./blocks/content/content.css";
+@import "./blocks/profile/profile.css";
+@import "./blocks/profile/__avatar/profile__avatar.css";
+@import "./blocks/profile/__info/profile__info.css";
+@import "./blocks/profile/__name/profile__name.css";
+@import "./blocks/profile/__description/profile__description.css";
+@import "./blocks/profile/__add/profile__add.css";
+@import "./blocks/profile/__edit/profile__edit.css";
+@import "./blocks/section/section.css";
+@import "./blocks/cards/cards.css";
+@import "./blocks/card/card.css";
+@import "./blocks/card/__trash/card__trash.css";
+@import "./blocks/card/__trash/_disabled/card__trash_disabled.css";
+@import "./blocks/card/__like/card__like.css";
+@import "./blocks/card/__like/_active/card__like_active.css";
+@import "./blocks/card/__like-container/card__like-container.css";
+@import "./blocks/card/__like-count/card__like-count.css";
+@import "./blocks/card/__figure/card__figure.css";
+@import "./blocks/card/__image/card__image.css";
+@import "./blocks/card/__caption/card__caption.css";
+@import "./blocks/card/__title/card__title.css";
+@import "./blocks/footer/footer.css";
+@import "./blocks/footer/__copyright/footer__copyright.css";
+@import "./blocks/popup/popup.css";
+@import "./blocks/popup/_type/popup_type_card.css";
+@import "./blocks/popup/_type/popup_type_profile.css";
+@import "./blocks/popup/_type/popup_type_img.css";
+@import "./blocks/popup/_background-color/popup_background-color_dark.css";
+@import "./blocks/popup/_active/popup_active.css";
+@import "./blocks/popup/__title/popup__title.css";
+@import "./blocks/popup/__title/_type/popup__title_type_delete-card.css";
+@import "./blocks/popup/__image/popup__image.css";
+@import "./blocks/popup/__figure/popup__figure.css";
+@import "./blocks/popup/__conteiner/popup__container.css";
+@import "./blocks/popup/__conteiner/_img/popup__container_img.css";
+@import "./blocks/popup/__close/popup__close.css";
+@import "./blocks/popup/__caption/popup__caption.css";
+@import "./blocks/form/form.css";
+@import "./blocks/form/_type/form_type_profile.css";
+@import "./blocks/form/_type/form_type_card.css";
+@import "./blocks/form/__save/form__save.css";
+@import "./blocks/form/__save/_type/form__save_type_profile.css";
+@import "./blocks/form/__save/_type/form__save_type_card.css";
+@import "./blocks/form/__save/_type/form__save_type_delete-card.css";
+@import "./blocks/form/__save/_inactive/form__save_inactive.css";
+@import "./blocks/form/__input-text/form__input-text.css";
+@import "./blocks/form/__input-text/_type/form__input-text_type_name.css";
+@import "./blocks/form/__input-text/_type/form__input-text_type_job.css";
+@import "./blocks/form/__input-text/_type/form__input-text_type_card-name.css";
+@import "./blocks/form/__input-text/_type/form__input-text_type_card-link.css";
+@import "./blocks/form/__input-text/_type/form__input-text_type_error.css";
+@import "./blocks/form/__input-error/form__input-error.css";
+@import "./blocks/form/__input-error/_active/form__input-error_active.css";
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* * {
+  outline: 1px solid red;
 }
+ */

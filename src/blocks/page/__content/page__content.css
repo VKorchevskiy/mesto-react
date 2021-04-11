@@ -1,0 +1,16 @@
+.page__content {
+  padding: 0 5.9375% 0;
+}
+
+@media screen and (min-width: 768px) {
+  .page__content {
+    padding: 0 15.625% 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .page__content {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
