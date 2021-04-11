@@ -1,11 +1,10 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 
-function Card({name, likes, link}) {
+function Card({name, likes, link, onCardClick}) {
   return (
     <li className="card">
       <figure className="card__figure">
-        <img src={link} alt={name} className="card__image" />
+        <img src={link} alt={name} className="card__image" onClick={() => onCardClick({name, link})}/>
         <figcaption className="card__caption">
           <h2 className="card__title">{name}</h2>
           <div className="card__like-container">
