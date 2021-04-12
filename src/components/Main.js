@@ -16,7 +16,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
         setUserName(userInfo.name);
         setUserDescription(userInfo.about);
         setUserAvatar(userInfo.avatar);
-        setUserId(userId._id);
+        setUserId(userInfo._id);
         setCards(cards);
       })
       .catch(err => console.log(err));
