@@ -33,13 +33,31 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
       <section className="section">
         <ul className="cards">
           {cards.map(card => (
-              <Card key={card._id} {...card} onCardClick={onCardClick}/>
-            )
+            <Card key={card._id} {...card} onCardClick={onCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>
+          )
           )}
         </ul>
       </section>
     </main>
-  )
+  );
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(like => like._id === currentUser._id);
+
+    api.changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+      })
+      .catch(err => console.log(err));
+  }
+
+  function handleCardDelete(card) {
+    api.deleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== card._id))
+      })
+      .catch(err => console.log(err));
+  }
 }
 
 export default Main;

@@ -115,6 +115,10 @@ class Api {
       .then(res => this._checkServerResponse(res));
   }
 
+  changeLikeCardStatus(id, isLiked) {
+    return isLiked ? this.putLike(id) : this.deleteLike(id);
+  }
+
   /**
    * Установка нового аватара
    * @param {avatar} avatar- аватар
