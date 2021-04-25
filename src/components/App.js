@@ -1,19 +1,29 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-
+import { api } from '../utils/api';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({name: null, link: null});
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({ name: null, link: null });
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    api.getUserInfo().
+      then((userData) => {
+        setCurrentUser(userData);
+      }).catch(err => console.log(err));
+  }, []);
 
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Header />
       <Main
         onEditProfile={handleEditProfileClick}
@@ -53,9 +63,9 @@ function App() {
         <input className="button form__save form__save_type_card" type="submit" value="Сохранить" />
       </ PopupWithForm>
 
-      <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 
-    </>
+    </CurrentUserContext.Provider>
   );
 
   function handleEditProfileClick() {
@@ -70,15 +80,15 @@ function App() {
     setIsEditAvatarPopupOpen(true);
   }
 
-  function handleCardClick({name, link}) {
-    setSelectedCard({name , link});
+  function handleCardClick({ name, link }) {
+    setSelectedCard({ name, link });
   }
 
   function closeAllPopups() {
     setIsAddPlacePopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard({name: null, link: null});
+    setSelectedCard({ name: null, link: null });
   }
 
 }

@@ -1,22 +1,16 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { api } from '../utils/api';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState();
-  const [userId, setUserId] = useState('');
   const [cards, setCards] = useState([]);
+  const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()]).
-      then(([userInfo, cards]) => {
-        setUserName(userInfo.name);
-        setUserDescription(userInfo.about);
-        setUserAvatar(userInfo.avatar);
-        setUserId(userInfo._id);
+    api.getInitialCards().
+      then((cards) => {
         setCards(cards);
       })
       .catch(err => console.log(err));
@@ -26,12 +20,12 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
     <main className="content page__content">
       <section className="profile">
         <button className="button button_type_edit-avatar" type="button" aria-label="Редактировать аватар" onClick={onEditAvatar}>
-          <img src={userAvatar} alt={userName} className="profile__avatar" />
+          <img src={currentUser.avatar} alt={currentUser.name} className="profile__avatar" />
         </button>
         <div className="profile__info">
-          <h1 className="profile__name">{userName}</h1>
+          <h1 className="profile__name">{currentUser.name}</h1>
           <button className="button profile__edit" type="button" aria-label="Редактировать" onClick={onEditProfile}></button>
-          <p className="profile__description">{userDescription}</p>
+          <p className="profile__description">{currentUser.about}</p>
         </div>
         <button className="button profile__add" type="button" aria-label="Добавить" onClick={onAddPlace}></button>
       </section>
