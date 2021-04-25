@@ -4,6 +4,9 @@ import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 import ImagePopup from './ImagePopup';
 import { api } from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -32,48 +35,22 @@ function App() {
         onCardClick={handleCardClick}
       />
       <Footer />
-      <PopupWithForm name={'profile'} title={'Редактировать профиль'} isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-        <input className="form__input-text form__input-text_type_name" type="text" name="name-profile" id="name-profile"
-          placeholder="Имя профиля" defaultValue="" required minLength="2" maxLength="40" />
-        <span className="form__input-error name-profile-error"></span>
-        <input className="form__input-text form__input-text_type_job" type="text" name="job-profile" id="job-profile"
-          placeholder="Род деятельности" defaultValue="" required minLength="2" maxLength="200" />
-        <span className="form__input-error job-profile-error"></span>
-        <input className="button form__save form__save_type_profile" type="submit" value="Сохранить" />
-      </ PopupWithForm>
-
-      <PopupWithForm name={'card'} title={'Новое место'} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-        <input className="form__input-text form__input-text_type_card-name" type="text" name="card-name" id="card-name"
-          placeholder="Название" defaultValue="" required minLength={2} maxLength={30} />
-        <span className={`form__input-error card-name-error`}></span>
-        <input className="form__input-text form__input-text_type_card-link" type="url" name="card-link" id="card-link"
-          placeholder="Ссылка на картинку" defaultValue="" required />
-        <span className="form__input-error card-link-error"></span>
-        <input className="button form__save form__save_type_card" type="submit" value="Сохранить" />
-      </ PopupWithForm>
-
+      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+      <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
       <PopupWithForm name={'delete-card'} title={'Вы уверены?'}>
         <input className="button form__save form__save_type_delete-card" type="submit" value="Да" />
       </ PopupWithForm>
-
-      <PopupWithForm name={'user-avatar'} title={'Обновить аватар'} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-        <input className="form__input-text form__input-text_type_user-avatar" type="url" name="user-avatar" id="user-avatar"
-          placeholder="Ссылка на картинку" defaultValue="" required />
-        <span className="form__input-error user-avatar-error"></span>
-        <input className="button form__save form__save_type_card" type="submit" value="Сохранить" />
-      </ PopupWithForm>
-
+      <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-
     </CurrentUserContext.Provider>
   );
 
   function handleEditProfileClick() {
-    setIsAddPlacePopupOpen(true);
+    setIsEditProfilePopupOpen(true);
   }
 
   function handleAddPlaceClick() {
-    setIsEditProfilePopupOpen(true);
+    setIsAddPlacePopupOpen(true);
   }
 
   function handleEditAvatarClick() {
@@ -82,6 +59,24 @@ function App() {
 
   function handleCardClick({ name, link }) {
     setSelectedCard({ name, link });
+  }
+
+  function handleUpdateUser({ name, about }) {
+    api.setUserInfo({ name, about })
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeAllPopups();
+      })
+      .catch(err => console.log(err));
+  }
+
+  function handleUpdateAvatar({avatar}) {
+    api.setAvatar({avatar})
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeAllPopups();
+      })
+      .catch(err => console.log(err));
   }
 
   function closeAllPopups() {
