@@ -5,7 +5,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
   const handleChangeName = (e) => setName(e.target.value);
-  const handleChangeLink= (e) => setLink(e.target.value);
+  const handleChangeLink = (e) => setLink(e.target.value);
 
   function handleSubmit(e) {
     e.preventDefault();

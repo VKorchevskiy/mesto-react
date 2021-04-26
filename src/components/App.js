@@ -52,7 +52,7 @@ function App() {
       <PopupWithForm name={'delete-card'} title={'Вы уверены?'}>
         <input className="button form__save form__save_type_delete-card" type="submit" value="Да" />
       </ PopupWithForm>
-      <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
+      <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </CurrentUserContext.Provider>
   );
@@ -65,8 +65,8 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
-  function handleAddPlaceSubmit({name, link}) {
-    api.setCard({name, link})
+  function handleAddPlaceSubmit({ name, link }) {
+    api.setCard({ name, link })
       .then(newCard => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -109,8 +109,8 @@ function App() {
       .catch(err => console.log(err));
   }
 
-  function handleUpdateAvatar({avatar}) {
-    api.setAvatar({avatar})
+  function handleUpdateAvatar({ avatar }) {
+    api.setAvatar({ avatar })
       .then((userData) => {
         setCurrentUser(userData);
         closeAllPopups();
