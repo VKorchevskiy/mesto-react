@@ -36,7 +36,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       <input className="button form__save form__save_type_profile" type="submit" value="Сохранить" />
     </ PopupWithForm>
   );
-
 }
 
 export default EditProfilePopup;
