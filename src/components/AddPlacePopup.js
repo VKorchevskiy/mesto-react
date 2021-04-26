@@ -3,7 +3,7 @@ import PopupWithForm from './PopupWithForm';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function AddPlacePopup({ isOpen, onClose }) {
-
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <PopupWithForm name={'card'} title={'Новое место'} isOpen={isOpen} onClose={onClose}>
