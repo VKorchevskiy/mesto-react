@@ -7,13 +7,6 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const handleChangeName = (e) => setName(e.target.value);
   const handleChangeLink= (e) => setLink(e.target.value);
 
-  // useEffect(() => {
-  //   if (name && link) {
-  //     setName('');
-  //     setLink('');
-  //   }
-  // }, );
-
   function handleSubmit(e) {
     e.preventDefault();
 
