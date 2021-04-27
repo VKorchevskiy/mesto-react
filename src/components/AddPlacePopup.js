@@ -9,11 +9,12 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    onAddPlace({
-      name,
-      link,
-    });
+    onAddPlace({ name, link })
+      .then(() => {
+        setName('');
+        setLink('');
+      })
+      .catch(err => console.log(err));
   }
 
   return (

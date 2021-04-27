@@ -29,7 +29,7 @@ class Api {
     return fetch(this._urlUserMe, {
       headers: this._headers,
     })
-      .then(res => this._checkServerResponse(res));
+      .then(this._checkServerResponse);
   }
 
   /**
@@ -40,7 +40,7 @@ class Api {
     return fetch(this._urlCards, {
       headers: this._headers,
     })
-      .then(res => this._checkServerResponse(res));
+      .then(this._checkServerResponse);
   }
 
   /**
@@ -56,7 +56,7 @@ class Api {
         about: about,
       }),
     })
-      .then(res => this._checkServerResponse(res));
+      .then(this._checkServerResponse);
   }
 
   /**
@@ -73,7 +73,7 @@ class Api {
         link: link,
       }),
     })
-      .then(res => this._checkServerResponse(res));
+      .then(this._checkServerResponse);
   }
 
   /**
@@ -86,7 +86,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-      .then(res => this._checkServerResponse(res));
+      .then(this._checkServerResponse);
   }
 
   /**
@@ -99,7 +99,7 @@ class Api {
       method: 'PUT',
       headers: this._headers,
     })
-      .then(res => this._checkServerResponse(res));
+      .then(this._checkServerResponse);
   }
 
   /**
@@ -112,7 +112,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-      .then(res => this._checkServerResponse(res));
+      .then(this._checkServerResponse);
   }
 
   changeLikeCardStatus(id, isLiked) {
@@ -132,7 +132,7 @@ class Api {
         avatar: avatar,
       }),
     })
-      .then(res => this._checkServerResponse(res));
+      .then(this._checkServerResponse);
   }
 }
 
